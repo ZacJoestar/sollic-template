@@ -1,0 +1,467 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "base";
+@import "mobile";
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENT
+----------------------------------------------------------------
+#Fonts
+#Nav / Logo / Search
+##Nav
+##Logo
+##Search
+#Content
+##Containers
+##Articles
+###Containers
+###Images
+###Hover
+#Footer
+
+--------------------------------------------------------------*/
+/*----------------------------------*/
+/* FONTS                   
+/*----------------------------------*/
+
+.desk-nav{
+	a{
+		@include desk-nav;
+	}
+}
+
+.text {
+	@include text;
+	
+}
+
+.title{
+	@include title;
+	
+}
+
+.date{
+	@include date;
+	
+}
+
+.category{
+	@include category;
+}
+
+.baseline{
+	@include baseline;
+}
+
+.header-title {
+	@include header-title;
+	@include respond-to(medium-screens){
+		font-size: 50px;
+		line-height: normal;
+	}
+	@include respond-to(large-screens){
+		font-size: 50px;
+		line-height: normal;
+	}
+	@include respond-to(wide-screens){
+		font-size: 65px;
+		line-height: normal;
+	}
+}
+
+/*----------------------------------*/
+/* #NAV / LOGO / SEARCH                   
+/*----------------------------------*/
+/*----------------------------------*/
+/* ##NAV                   
+/*----------------------------------*/
+.nav{
+	height: 150px;
+	padding: 0 15px;
+}
+
+.nav-icon{
+	width: 30%;
+}
+
+.navbar-toggler{
+	padding: .25rem .75rem .25rem 0;
+}
+
+.navbar-toggler .icon-bar {
+    background-color: #1c1c1c;
+}
+
+.navbar-toggler .icon-bar {
+  	display: block;
+  	width: 22px;
+ 	height: 2px;
+ 	border-radius: 1px;
+}
+
+.navbar-toggler .icon-bar + .icon-bar {
+  	margin-top: 4px;
+}
+
+.indexcity {
+  	z-index: 9999;
+  	position: relative;
+  	.icon-bar{
+		background-color: #ffffff;
+  	}
+}
+
+.right {
+    right: 0 !important;
+    left: 0 !important;
+}
+
+.nav-mobile{
+	@include respond-to(bigphone-tablet){
+		.desk-nav{
+			a{
+				color:#fff;
+			}
+			.nav{
+				flex-direction: row;
+				display: flow-root;
+				position: relative;
+				top: 30%;
+			}
+			li{
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		}
+		.navbar-collapse{
+			background-color:rgba(28,28,29,0.95);
+		    position: fixed;
+		    top: 0;
+		    transition:all 0.8s ease-out;
+		    height: 100%;
+		    width: 100%;
+		    left: 1024px;
+		    z-index: 2;
+		}
+		.navbar-inverse .navbar-nav>li>a{
+			color: #000;
+		}
+		/*---- iOS ----*/
+		@supports (-webkit-appearance:none) {
+		    .safari_only { display: block; }
+		}
+		@supports (-webkit-text-size-adjust:none) and (not (-ms-ime-align:auto))
+		and (not (-moz-appearance:none)) { .safari_only { display:block; }
+		}
+		@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) { .safari_only { display:block; }  
+		}
+	}
+	@include respond-to(large-screens){
+		@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) { .nav { flex-wrap:nowrap; }  
+		}
+	}
+}
+
+.nav-hover {
+	@include respond-to(wide-screens){
+		transition: 0.3s ease;
+		background: #ffffff;
+		color: #ffffff;
+		font-size: 20px;
+		text-decoration: none;
+		border-top: 4px solid #ffffff;
+		border-bottom: 4px solid #ffffff;
+		padding: 20px 0;
+		margin: 0 20px;
+		&:hover{
+			border-top: 4px solid $purple;
+			border-bottom: 4px solid $purple;
+			color: $purple;
+			padding: 6px 0;
+		}
+	}
+}
+
+/*----------------------------------*/
+/* ##SEARCH                   
+/*----------------------------------*/
+.search{
+	margin-left: 15px;
+	.input-group{
+		position: absolute;
+		width: 0px;
+		top: 100px;
+		right: 30px;
+	    margin-left: 10px;
+	    overflow: hidden;
+	    transition: all ease .5s;
+	}
+	.input-open{
+		width: 250px;
+	}
+	.btn-secondary{
+		&:hover{
+			color: #fff;
+			background-color: $purple;
+			border-color: $purple;
+		}
+	}
+}
+
+.btn-secondary{
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,.15);
+	color: $black;
+	&:hover{
+		color: #fff;
+		background-color: $black;
+		border-color: $black;
+	}
+}
+
+.search-icon-desk{
+	display: none;
+	cursor: pointer;
+	transition: color ease .3s;
+	&:hover{
+		color: $purple;
+	}
+}
+
+.modal-backdrop.show{
+	opacity: .9;
+}
+
+.modal-dialog {
+	min-height: calc(100vh - 60px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: auto;
+}
+
+.close{
+	font-size: 5rem;
+	color: #ffffff;
+	opacity: 1;
+	position: absolute;
+	top: 20%;
+	width: 100%;
+}
+
+/*----------------------------------*/
+/* ##LOGO                   
+/*----------------------------------*/
+.logo-mobile{
+	margin-bottom: 10px;
+}
+
+.logo-desk{
+	display: none;
+	img{
+		width: 95px;
+		margin-bottom: 5px;
+	}
+}
+
+/*----------------------------------*/
+/* #HEADER                  
+/*----------------------------------*/
+.header-banner{
+	overflow: hidden;
+	min-height: 350px;
+	background: url('../assets/img/image-article-1.jpeg')
+				no-repeat
+				center center;
+	background-size: cover;
+	
+	@include respond-to(medium-screens){
+		min-height: 700px;
+	}
+	@include respond-to(large-screens){
+		min-height: 500px;
+	}
+	@include respond-to(wide-screens){
+		min-height: 580px;
+	}
+}
+
+.wrapper-banner{
+	padding: 0;
+	display: flex;
+	img{
+		min-height: 350px;
+		position: absolute;
+		z-index: 0;
+	}
+}
+
+.banner-content{
+	position: relative;
+	padding: 30px;
+	@include respond-to(wide-screens){
+		padding-left:70px;
+	}
+	h1{
+		margin-bottom: 30px;
+	}
+	span{
+		font-weight: 300;
+	}
+	a{
+		width: 100%;
+		max-width: 355px;
+		font-size: 14px;
+		padding: 10px 0;
+		transition: all ease .3s !important;
+		&:hover{
+			background-color: $purple !important;
+			color: #fff !important;
+		}
+	}
+}
+
+.desktop-content-banner{
+	@include respond-to(bigphone-tablet){
+		padding: 0;
+	}
+}
+
+/*----------------------------------*/
+/* #CONTENT                   
+/*----------------------------------*/
+/*----------------------------------*/
+/* ##ARTICLES                   
+/*----------------------------------*/
+/*----------------------------------*/
+/* ###CONTAINERS                   
+/*----------------------------------*/
+article{
+	margin: 15px 0;
+	h2 .fa{
+		float: right;
+		display: none;
+		left: 0;
+		position: relative;
+		transition: all ease .3s;
+	}
+	&:hover{
+		cursor: pointer;
+	}
+	&:hover h2>.fa{
+		left: 10px;
+		color: $purple;
+	}
+	&:hover .overlay{
+		opacity: 1;
+	}
+}
+
+.header-article{
+	padding: 15px 0;
+	margin-bottom: 15px;
+	border-bottom: solid 1px rgba(28,28,29, 0.12);
+}
+
+.main-article{
+	height: 325px;
+	margin-bottom: 15px;
+	@include respond-to(bigphone-tablet){
+		display: none;
+	}
+	.wrapper-content{
+		display: inline-block;
+	}
+}
+
+.two-articles{
+	@include respond-to(bigphone-tablet){
+		display: none;
+	}
+}
+
+/*----------------------------------*/
+/* ###IMAGES                   
+/*----------------------------------*/
+.main-img-article{
+	height: 400px;
+	overflow: hidden;
+	position: relative;
+}
+
+.img-article{
+	overflow: hidden;
+	position: relative;
+	min-height: 260px;
+	height: 260px;
+	margin-bottom: 15px;
+	@include respond-to(wide-screens){
+		height: 260px;
+		min-height: 260px;
+	}
+}
+
+.img-two-articles{
+	height: 400px;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+
+/*----------------------------------*/
+/* ###HOVER                   
+/*----------------------------------*/
+.overlay{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	opacity: 0;
+	background-color: rgba(211,33,241,0.6);
+	transition: all ease .3s;
+	display: none;
+	.fa{
+		color:#fff;
+		text-align: center;
+	}
+}
+
+/*----------------------------------*/
+/* FOOTER                  
+/*----------------------------------*/
+footer{
+	.footer-text{
+		@include footer-text;
+	}
+	.baseline-footer{
+		@include baseline-footer;
+	}
+	h3{
+		@include footer-title;
+	}
+
+	hr{
+		border-top: 1px solid $footer-grey;
+		width: 100%;
+	}
+}
+
+.wrapper-content-footer{
+	@include respond-to(wide-screens){
+		padding: 0 30px;
+	}
+}
+
+.logo-footer{
+	width: 210px;
+	margin: auto;
+	margin-bottom: 30px;  
+	img{
+		display: block;
+		margin-bottom: 20px;
+	}
+}
+

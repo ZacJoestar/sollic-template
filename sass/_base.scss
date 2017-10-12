@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import "mobile";
+
+$light-grey: #777777;
+$footer-grey: #b7b7b7;
+$grey: #5f5f5f;
+$black: #1c1c1d;
+$bg: #ededed;
+$purple: #d321f1;
+
+html, body{
+	font-family: 'Roboto';
+}
+
+body{
+	background-color: $bg;
+	@include respond-to(bigphone-tablet){
+		background-color: #fff;
+	}
+}
+
+.container-fluid{
+	@include respond-to(wide-screens){
+		padding-left: 75px;
+		padding-right: 75px;
+	}
+}
+
+.container{
+	@include respond-to(bigphone-tablet){
+		max-width: none;
+	}
+}
+
+.container{
+	padding: 15px 30px;
+}
+
+.desktop-header-wrapper{
+	background-color: #fff;
+}
+
+.desktop-content-wrapper{
+	padding: 15px 30px;
+	background-color: #fff;
+	@include respond-to(bigphone-tablet){
+		padding: 15px;
+	}
+}
+
+.navbar-brand{
+	margin-right: 0;
+}
+
+footer{
+	color: #ffffff;
+	background-color: $black;
+	padding: 50px 15px;
+}
+
+a{
+	&:hover{
+		cursor: pointer;
+	}
+}
+
+@mixin desk-nav{
+	font-size: 16px;
+	color: $black;
+	text-transform: uppercase;
+}
+
+@mixin text{
+	font-size: 14px;
+	letter-spacing: 1px;
+	color: $grey;
+	line-height: 22px;
+	font-weight: 400;
+}
+
+@mixin title{
+	margin: 10px 0;
+	font-size: 24px;
+	color: $black;
+	font-weight: 700;
+	text-transform: capitalize;
+}
+
+@mixin date{
+	font-size: 11px;
+	color: $black;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+@mixin category{
+	font-size: 11px;
+	color: $black;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+@mixin baseline{
+	font-size: 12px;
+	color: $light-grey;
+	line-height: 14px;
+}
+
+@mixin baseline-footer{
+	font-size: 12px;
+	margin-bottom: 0;
+	color: $footer-grey;
+}
+
+@mixin header-title{
+	font-size: 30px;
+	color: #ffffff;
+	line-height: 30px;
+	letter-spacing: 1px;
+	font-weight: 700;
+}
+
+@mixin footer-text{
+	font-size: 11px;
+	line-height: 18px;
+	margin-bottom: 25px;
+	letter-spacing: 1px;
+}
+
+@mixin footer-title{
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 25px;
+	text-transform: uppercase;
+}
+
+button{
+	border: none;
+	&:hover{
+		cursor: pointer;
+	}
+}
+
+button, a {
+	outline: none !important;
+}
